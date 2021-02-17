@@ -1,17 +1,18 @@
 # LaTeX Thesis Template
 
 ## How to build
+Use the `make all` command to output the compiled PDF.
 
 ## Installation guide
 
-## Web Editor
+### Web Editor
 You can use tools like [Overleaf](https://www.overleaf.com) as web editor if you don`t want to install LaTeX locally. Just upload the files and you should be good to go!
 
-## Local Setup
+### Local Setup
 * Install `TexLive` and used packages, e.g. on Ubuntu based systems via `sudo apt-get install texlive texlive-latex-extra texlive-lang-german biber`
 * Install the LaTeX editor of your choice
 
-## Contents
+## Structure
 
 This template was designed so that you can focus on content and not on
 presentation.  The following files may be edited:
