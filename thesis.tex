@@ -1,0 +1,130 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Do not change this document unless you know what you're doing! %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To write your thesis, edit the following files:
+% * myconfiguration.sty
+% * mybibliography.bib
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,a4paper,twoside]{report}
+\usepackage{myconfiguration,osrthesis}
+\usepackage[backend=biber,style=apa]{biblatex}
+
+\DeclareLanguageMapping{ngerman}{ngerman-apa}
+\DeclareLanguageMapping{UKEnglish}{british-apa}
+\DeclareLanguageMapping{english}{british-apa}
+
+\addbibresource[datatype=bibtex]{mybibliography.bib}
+
+\title{\thesistitle}
+\author{\thesisauthorgivenname\ \thesisauthorsurname}
+\date{\thesissubmissiondate}
+
+
+\begin{document}
+\maketitle
+
+\renewcommand{\chaptername}{}  % Remove 'Chapter' in chapter headings
+%%%%%%%%%%%%%%%%% PREFIX SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Make the page numbering use Roman numerals.  Start counting after title
+%% page.
+\renewcommand{\thepage}{\roman{page}}
+\setcounter{page}{1}
+
+%% Remove the page breaks between chapters
+\makeatletter
+\renewcommand\chapter{\par%
+  \thispagestyle{plain}%
+  \global\@topnum\z@
+  \@afterindentfalse
+  \secdef\@chapter\@schapter}
+\makeatother
+
+\chapter*{Versicherung}\label{chapter:versicherung}
+
+Ich versichere, dass ich die Arbeit ohne fremde Hilfe und ohne 
+Benutzung anderer als der angegebenen Quellen angefertigt habe und 
+dass die Arbeit in gleicher oder \"{a}hnlicher Form noch keiner 
+anderen Pr\"{u}fungsbeh\"{o}rde vorgelegen hat und von dieser als 
+Teil einer Pr\"{u}fungsleistung angenommen wurde. Alle Ausf\"{u}hrungen, 
+die w\"{o}rtlich oder sinngem\"{a}\ss\ \"{u}bernommen wurden, sind als 
+solche gekennzeichnet. 
+
+\vspace{.5in}
+\makebox[3in]{\hrulefill} \\
+\thesissubmissioncity, \printdate{\thesissubmissiondate}
+
+\chapter*{License}\label{chapter:license}
+
+This work is licensed under the Creative Commons Attribution 4.0 
+International license (CC BY 4.0), see 
+\url{https://creativecommons.org/licenses/by/4.0/}
+
+\vspace{.5in}
+\makebox[3in]{\hrulefill} \\
+\thesissubmissioncity, \printdate{\thesissubmissiondate}
+
+%% Re-install the page breaks between chapters
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+   \thispagestyle{plain}%
+   \global\@topnum\z@
+   \@afterindentfalse
+   \secdef\@chapter\@schapter}
+\makeatother
+
+\chapter*{Abstract}\label{chapter:abstract}
+\input contents/abstract.tex
+
+\iftoggle{thesis_in_german} {
+    \chapter*{Zusammenfassung}\label{chapter:zusammenfassung}
+    \input contents/zusammenfassung.tex
+}
+
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%% MAIN SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Example Section}\label{chapter:example}
+
+%% Note: Include these after the first \chapter declaration in the main 
+%% section. They should not be used after that.
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}
+%%
+
+\input contents/example.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%% CLOSING SECTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{subappendices}
+
+\renewcommand{\setthesection}{\Alph{section}}
+\renewcommand{\thesection}{\Alph{section}}
+\fancyhead[RE]{\footnotesize{Appendix \thesection: \rightmark}\normalfont}
+\pagebreak
+\iftoggle{thesis_in_german} {
+    \addcontentsline{toc}{chapter}{Anh\"{a}nge}
+}{
+    \addcontentsline{toc}{chapter}{Appendices}
+}
+\input contents/appendices.tex
+\end{subappendices}
+\fancyhead[RE]{\footnotesize{\rightmark}\normalfont}
+
+\clearpage\phantomsection %% Ensure the ToC entry for References has right pg#
+\iftoggle{thesis_in_german} {
+    \renewcommand\bibname{Literaturverzeichnis}
+    \addcontentsline{toc}{chapter}{Literaturverzeichnis}
+}{
+    \renewcommand\bibname{References}
+    \addcontentsline{toc}{chapter}{References}
+}
+\printbibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

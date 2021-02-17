@@ -1,0 +1,27 @@
+It is assumed that you have some basic understanding of how to write in
+LaTeX, how to install packages, and how to compile LaTeX.  If you do not,
+you will need to seek tutorials on this subject. 
+
+This template was designed so that you can focus on content and not on
+presentation.  The following files may be edited:
+
+* `myconfiguration.sty' - set your personal details such as your name 
+   and thesis title, and any additional packages you wish to include.
+* `mybibliography.bib' - your referenced materials.  A short selection 
+   of Prof. Riehle's works have been included. 
+* 'contents/zusammenfassung.tex' - if the thesis is being written in 
+   English, remove the file.  This will change the document language to
+   English and remove the unneeded Zusammenfassung section.
+* 'contents/' - all files in this directory are meant to be edited.
+   Section headings should be retained when they are provided, if
+   applicable.  The existing content is provided only as a guide or
+   example.
+
+We are making use of BibLaTeX instead of BibTeX. If you have not used
+BibLaTeX before you may need to install 'biber'. BibLaTeX is a modern
+bibliography tool which has more robust handling of unicode and URLs.
+
+If you notice an error and make a correction to another file, please
+inform us so that we can fix the template. This template is maintained
+by Ann Barcomb: ann.barcomb@fau.de
+

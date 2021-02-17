@@ -1,0 +1,122 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PACKAGES                                                               %%
+%% * Package 'caption' cannot use argument 'labelfont=bf' because this    %%
+%%   clashes with 'apacite', so the 'captionsetup' command is used in     %%
+%%   configuration instead                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{url} 
+\usepackage{a4}
+\usepackage[bookmarks=true,pdfborder={0 0 0}]{hyperref} 
+\usepackage{fancyhdr}
+\usepackage[titletoc,header,title]{appendix}
+\usepackage{caption} 
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{etoolbox}
+
+
+%% Set up an English/German language toggle
+\newtoggle{thesis_in_german}
+\IfFileExists{contents/zusammenfassung.tex} {
+    \toggletrue{thesis_in_german}
+}{
+    \togglefalse{thesis_in_german}
+}
+
+
+%% Determine which date setting and language to use by default
+\iftoggle{thesis_in_german} {
+    \usepackage[UKenglish,ngerman]{babel}
+    \usepackage[UKenglish,ngerman]{isodate}
+    \selectlanguage{ngerman}
+}{
+    \usepackage[ngerman,UKenglish]{babel}
+    \usepackage[ngerman,UKenglish]{isodate}
+    \selectlanguage{UKenglish}
+    \cleanlookdateon
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% GENERAL CONFIGURATION                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\raggedbottom
+\bibliographystyle{apacite}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PACKAGE CONFIGURATION                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% appendix package configuration
+\renewcommand{\appendixname}{Appendix}
+
+%% fancyhdr package configuration
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\cfoot[\thepage]{\thepage}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+
+%% caption package configuration
+\captionsetup{labelfont=bf}   
+
+%% titlesec package configuration
+\titleformat{\chapter}[hang]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{1em}{} 
+
+
+
+%% hyperref package configuration
+\hypersetup{pdftitle={\thesistitle},
+            pdfauthor={\thesisauthorsurname}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TITLE PAGE CONFIGURATION                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\renewcommand\maketitle{%
+        \begin{titlepage}
+        \thispagestyle{empty}
+        \Large Friedrich-Alexander-Universit\"{a}t Erlangen-N\"{u}rnberg
+        \vspace{0.03in} \\
+        \Large Technische Fakult\"{a}t, Department Informatik \\
+        %
+ 	\vfill
+        \Large \MakeUppercase{\thesisauthorgivenname\ \thesisauthorsurname}
+        \vspace{0.1in} \\
+        \Large \MakeUppercase{\thesislevel\ thesis} \\	
+        %
+ 	\\
+        \\
+	\LARGE\textbf{\MakeUppercase{\thesistitle}} \\
+        \\
+	\Large\textbf{\MakeUppercase{\thesissubtitle}} \\
+        %
+        \\
+        \\
+\iftoggle{thesis_in_german} {
+	\normalsize Eingereicht am \printdate{\thesissubmissiondate}  \\ 
+}{
+	\normalsize Submitted on \printdate{\thesissubmissiondate}  \\ 
+}
+        %
+ 	\vfill
+\iftoggle{thesis_in_german} {
+Betreuer:
+}{
+Supervisor:
+}
+Prof. Dr. Dirk Riehle, M.B.A.\\Professur f\"{u}r Open-Source-Software\\Department Informatik, Technische Fakult\"{a}t\\Friedrich-Alexander-Universit\"{a}t Erlangen-N\"{u}rnberg
+        %
+        \end{titlepage}
+}
+\makeatother
+
+
