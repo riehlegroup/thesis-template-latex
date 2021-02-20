@@ -1,7 +1,8 @@
 # LaTeX Thesis Template
 
 ## How to build
-Use the `make all` command to output the compiled PDF.
+Use the `make` or `make build` command to compile the final PDF.
+For more information about the provided targets (tasks) use `make help`.
 
 ## Installation guide
 
