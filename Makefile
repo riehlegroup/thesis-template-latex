@@ -4,24 +4,24 @@ TEX_FILE = thesis
 all: build
 
 .PHONY: latex
-latex: cleantemp ## Runs only latex and biber commands.
+latex: cleantemp ## Run only latex and biber commands.
 	latex ${TEX_FILE}.tex && \
 	biber ${TEX_FILE} && \
 	latex ${TEX_FILE}.tex
 
 .PHONY: pdflatex
-pdflatex: ## Runs only the pdflatex command.
+pdflatex: ## Run only the pdflatex command.
 	pdflatex ${TEX_FILE}
 
 .PHONY: build
-build: latex pdflatex ## Compiles the final PDF (latex & pdflatex).
+build: latex pdflatex ## Compile the final PDF (latex & pdflatex).
 
 .PHONY: cleantemp
-cleantemp: ## Removes all temporary files created during the compiling process.
+cleantemp: ## Remove all temporary files created during the compiling process.
 	rm -f *.aux *.bbl *.bcf *.out *.blg *.dvi *.log *.toc *.run.xml
 
 .PHONY: clean
-clean: cleantemp ## Remove all created files created by the Makefile including the compiled PDF.
+clean: cleantemp ## Remove all created files including the compiled PDF.
 	rm -f ${TEX_FILE}.pdf
 
 .PHONY: help
