@@ -30,11 +30,19 @@
     \usepackage[UKenglish,ngerman]{babel}
     \usepackage[UKenglish,ngerman]{isodate}
     \selectlanguage{ngerman}
+
+    \newcommand{\appendixnamesingular}{Anhang}
+    \newcommand{\appendixnameplural}{Anhänge}
+    \newcommand{\referencesname}{Literaturverzeichnis}
 }{
     \usepackage[ngerman,UKenglish]{babel}
     \usepackage[ngerman,UKenglish]{isodate}
     \selectlanguage{UKenglish}
     \cleanlookdateon
+
+    \newcommand{\appendixnamesingular}{Appendix}
+    \newcommand{\appendixnameplural}{Appendices}
+    \newcommand{\referencesname}{References}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,7 +58,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% appendix package configuration
-\renewcommand{\appendixname}{Appendix}
+\renewcommand{\appendixname}{\appendixnamesingular}
 
 %% fancyhdr package configuration
 \pagestyle{fancy}

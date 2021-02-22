@@ -30,7 +30,7 @@
 
 %% Make the page numbering use Roman numerals.  Start counting after title
 %% page.
-\renewcommand{\thepage}{\roman{page}}
+\pagenumbering{roman}
 \setcounter{page}{1}
 
 %% Remove the page breaks between chapters
@@ -90,11 +90,8 @@ International license (CC BY 4.0), see
 
 %%%%%%%%%%%%%%%%% MAIN SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Note: Include these after the first \chapter declaration in the main 
-%% section. They should not be used after that.
-\renewcommand{\thepage}{\arabic{page}}
-\setcounter{page}{1}
-%%
+\cleardoublepage
+\pagenumbering{arabic}
 
 \input contents/example.tex
 
@@ -106,25 +103,16 @@ International license (CC BY 4.0), see
 
 \renewcommand{\setthesection}{\Alph{section}}
 \renewcommand{\thesection}{\Alph{section}}
-\fancyhead[RE]{\footnotesize{Appendix \thesection: \rightmark}\normalfont}
+\fancyhead[RE]{\footnotesize{\appendixnamesingular\ \thesection: \rightmark}\normalfont}
 \pagebreak
-\iftoggle{thesis_in_german} {
-    \addcontentsline{toc}{chapter}{Anhänge}
-}{
-    \addcontentsline{toc}{chapter}{Appendices}
-}
+\addcontentsline{toc}{chapter}{\appendixnameplural}
 \input contents/appendices.tex
 \end{subappendices}
 \fancyhead[RE]{\footnotesize{\rightmark}\normalfont}
 
-\clearpage\phantomsection %% Ensure the ToC entry for References has right pg#
-\iftoggle{thesis_in_german} {
-    \renewcommand\bibname{Literaturverzeichnis}
-    \addcontentsline{toc}{chapter}{Literaturverzeichnis}
-}{
-    \renewcommand\bibname{References}
-    \addcontentsline{toc}{chapter}{References}
-}
+\cleardoublepage
+\renewcommand\bibname{\referencesname}
+\addcontentsline{toc}{chapter}{\referencesname}
 \printbibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
