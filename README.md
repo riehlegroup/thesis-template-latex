@@ -9,9 +9,16 @@ For more information about the provided targets (tasks) use `make help`.
 ### Web Editor
 You can use tools like [Overleaf](https://www.overleaf.com) as web editor if you don`t want to install LaTeX locally. Just upload the files and you should be good to go!
 
-### Local Setup
+### Local Setup (Linux)
 * Install `TexLive` and used packages, e.g. on Ubuntu based systems via `sudo apt-get install texlive texlive-latex-extra texlive-lang-german biber`
 * Install the LaTeX editor of your choice
+
+### Local Setup (macOS)
+
+MacTeX is a full LaTeX distribution (>4 GB) including a GUI application and all necessary packages. 
+Install MacTeX via [Homebrew](https://brew.sh) or download it from [https://www.tug.org/mactex/](https://www.tug.org/mactex/).
+
+* `brew install mactex` or `brew install mactex-no-gui` and restart the terminal
 
 ## Structure
 
