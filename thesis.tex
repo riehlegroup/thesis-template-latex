@@ -12,8 +12,7 @@
 \usepackage[backend=biber,style=apa]{biblatex}
 
 \DeclareLanguageMapping{ngerman}{ngerman-apa}
-\DeclareLanguageMapping{UKEnglish}{british-apa}
-\DeclareLanguageMapping{english}{british-apa}
+\DeclareLanguageMapping{british}{british-apa}
 
 \addbibresource[datatype=bibtex]{mybibliography.bib}
 
@@ -69,18 +68,18 @@ International license (CC BY 4.0), see
 %% Re-install the page breaks between chapters
 \makeatletter
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-   \thispagestyle{plain}%
-   \global\@topnum\z@
-   \@afterindentfalse
-   \secdef\@chapter\@schapter}
+  \thispagestyle{plain}%
+  \global\@topnum\z@
+  \@afterindentfalse
+  \secdef\@chapter\@schapter}
 \makeatother
 
 \chapter*{Abstract}\label{chapter:abstract}
 \input contents/abstract.tex
 
 \iftoggle{thesis_in_german} {
-    \chapter*{Zusammenfassung}\label{chapter:zusammenfassung}
-    \input contents/zusammenfassung.tex
+  \chapter*{Zusammenfassung}\label{chapter:zusammenfassung}
+  \input contents/zusammenfassung.tex
 }
 
 \tableofcontents
