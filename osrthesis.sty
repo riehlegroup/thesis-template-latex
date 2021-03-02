@@ -8,7 +8,7 @@
 \usepackage{a4}
 \usepackage[bookmarks=true,pdfborder={0 0 0}]{hyperref} 
 \usepackage{fancyhdr}
-\usepackage[titletoc,header,title]{appendix}
+\usepackage[titletoc,header,title,toc,page]{appendix}
 \usepackage{caption}
 \usepackage{titlesec}
 \usepackage{parskip}
@@ -63,11 +63,31 @@
 
 %% fancyhdr package configuration
 \pagestyle{fancy}
-\fancyhf{}
-\fancyfoot{}
-\cfoot[\thepage]{\thepage}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+
+\fancypagestyle{plain}{                     % chapters
+    \fancyhf{}                              % clear top/bottom bar
+    \renewcommand{\headrulewidth}{0pt}      % no head rule 
+    \fancyhf[lef,rof]{\thepage}             % page number on outer edge
+}
+
+\newcommand\headerstyleprefixsection{      % prefix section
+    \fancyhf{}                             % clear top/bottom bar
+    \renewcommand{\headrulewidth}{0pt}     % no head rule 
+    \fancyfoot[LE,RO]{\thepage}            % page number on outer edge
+}
+\newcommand\headerstylemainsection{        % main section
+    \fancyhf{}                             % clear top/bottom bar
+    \renewcommand{\headrulewidth}{1pt}     % head rule
+    \fancyfoot[LE,RO]{\thepage}            % page number on outer edge
+    \fancyhead[LE,RO]{\leftmark}
+}
+\newcommand\headerstyleclosingsection{     % closing section
+    \fancyhf{}                             % clear top/bottom bar
+    \renewcommand{\headrulewidth}{1pt}     % head rule
+    \fancyfoot[LE,RO]{\thepage}            % page number on outer edge
+    \fancyhead[LE,RO]{\normalfont{\appendixnamesingular\ \rightmark}}
+}
+    
 
 %% caption package configuration
 \captionsetup{labelfont=bf}   
