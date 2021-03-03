@@ -98,12 +98,14 @@ International license (CC BY 4.0), see
 
 
 %%%%%%%%%%%%%%%%% CLOSING SECTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cleardoublepage
-\renewcommand{\setthesection}{\Alph{section}}
-\renewcommand{\thesection}{\Alph{section}}
-\headerstyleclosingsection
 
 \begin{appendices}
+
+  \renewcommand{\setthesection}{\Alph{section}}
+  \renewcommand{\thesection}{\Alph{section}}
+  \headerstyleclosingsection\
+  \renewcommand\sectionmark[1]{\markright{\thesection : #1}} % Appendix A. => Appendix A:
+
   \input contents/appendices.tex
 \end{appendices}
 
