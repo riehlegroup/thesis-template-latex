@@ -25,12 +25,11 @@
 \maketitle
 
 \renewcommand{\chaptername}{}  % Remove 'Chapter' in chapter headings
-%%%%%%%%%%%%%%%%% PREFIX SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Make the page numbering use Roman numerals.  Start counting after title
-%% page.
+%%%%%%%%%%%%%%%%% PREFIX SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{roman}
 \setcounter{page}{1}
+\headerstyleprefixsection
 
 %% Remove the page breaks between chapters
 \makeatletter
@@ -91,6 +90,7 @@ International license (CC BY 4.0), see
 
 \cleardoublepage
 \pagenumbering{arabic}
+\headerstylemainsection
 
 \input contents/example.tex
 
@@ -98,16 +98,16 @@ International license (CC BY 4.0), see
 
 
 %%%%%%%%%%%%%%%%% CLOSING SECTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{subappendices}
 
-\renewcommand{\setthesection}{\Alph{section}}
-\renewcommand{\thesection}{\Alph{section}}
-\fancyhead[RE]{\footnotesize{\appendixnamesingular\ \thesection: \rightmark}\normalfont}
-\pagebreak
-\addcontentsline{toc}{chapter}{\appendixnameplural}
-\input contents/appendices.tex
-\end{subappendices}
-\fancyhead[RE]{\footnotesize{\rightmark}\normalfont}
+\begin{appendices}
+
+  \renewcommand{\setthesection}{\Alph{section}}
+  \renewcommand{\thesection}{\Alph{section}}
+  \headerstyleclosingsection\
+  \renewcommand\sectionmark[1]{\markright{\thesection : #1}} % Appendix A. => Appendix A:
+
+  \input contents/appendices.tex
+\end{appendices}
 
 \cleardoublepage
 \renewcommand\bibname{\referencesname}
