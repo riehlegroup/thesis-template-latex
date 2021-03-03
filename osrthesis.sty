@@ -62,8 +62,6 @@
 \renewcommand{\appendixname}{\appendixnamesingular}
 
 %% fancyhdr package configuration
-\pagestyle{fancy}
-
 \renewcommand{\chaptermark}[1]{
     \markboth{
         \@chapapp\ {\footnotesize\thechapter}. \ % no uppercase for header bar \rightmark in all chapters (excluding appendix)
@@ -71,10 +69,17 @@
     }{}%
 } 
 
+\fancypagestyle{plain}{         % chapter config
+    \fancyhf{}
+    \fancyfoot[LE,RO]{\thepage}            % page number on outer edge
+}
+
+\pagestyle{fancy}
+
 \newcommand\headerstyleprefixsection{      % prefix section
     \fancyhf{}                             % clear top/bottom bar
     \renewcommand{\headrulewidth}{0pt}     % no head rule 
-    \fancyfoot[LE,RO]{\nouppercase{\thepage}}            % page number on outer edge
+    \fancyfoot[LE,RO]{\thepage}            % page number on outer edge
 }
 \newcommand\headerstylemainsection{        % main section
     \fancyhf{}                             % clear top/bottom bar
