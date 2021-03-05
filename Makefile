@@ -3,18 +3,14 @@ TEX_FILE = thesis
 .PHONY: all
 all: build
 
-.PHONY: latex
-latex: cleantemp ## Run only latex and biber commands.
-	latex ${TEX_FILE}.tex && \
-	biber ${TEX_FILE} && \
-	latex ${TEX_FILE}.tex
-
 .PHONY: pdflatex
 pdflatex: ## Run only the pdflatex command.
 	pdflatex ${TEX_FILE}
+	biber ${TEX_FILE} && \
+	pdflatex ${TEX_FILE}.tex
 
 .PHONY: build
-build: latex pdflatex ## Compile the final PDF (latex & pdflatex).
+build: pdflatex ## Compile the final PDF (latex & pdflatex).
 
 .PHONY: cleantemp
 cleantemp: ## Remove all temporary files created during the compiling process.
