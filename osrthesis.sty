@@ -123,32 +123,40 @@
         \thispagestyle{empty}
 
         \begin{center}
-            \LARGE{\textbf{\MakeUppercase{\thesistitle}}}
+            \huge{\textbf{{\thesistitle}}}
             \par        % fixes line height
             \vspace{0.2in}
-            \textbf{\Large{\thesisauthorgivenname\ \thesisauthorsurname}}
+            \normalsize{\MakeUppercase{\thesistype}}
             \\
-            \vspace{0.2in}
-            \Large{\MakeUppercase{\thesistype}}
+            \vspace{0.3in}
+            \textbf{\Large{\thesisauthorgivenname\ \thesisauthorsurname}}
+            
+            \vfill
+            
+            \submittedon\ \printdate{\thesissubmissiondate}
 
             \vfill
             
-            \includegraphics[width=.7\textwidth]{./resources/Logo_FAU_Techfak.jpg}
-            \Large Friedrich-Alexander-Universität Erlangen-Nürnberg
+            \begin{center}
+                \includegraphics[width=.3\textwidth]{./resources/Logo_FAU_Sigil.jpg}
+            \end{center}
+            \vspace{0.3in}
+            Friedrich-Alexander-Universität Erlangen-Nürnberg
             \vspace{0.03in} \\
-            \Large Technische Fakultät, Department Informatik
+            Technische Fakultät, Department Informatik
             \vspace{0.03in} \\
-            \Large Professur für Open-Source-Software
-
-            \vfill
-
-            \submittedon\ \printdate{\thesissubmissiondate}
+            Professur für Open-Source-Software
+            \vspace{0.3in}
 
             \vfill
 
             \underline{\supervisor :}
             \\
             \thesissupervisors
+            
+            \vfill
+
+            \includegraphics[width=.7\textwidth]{./resources/Logo_FAU_Techfak.jpg}
         \end{center}
     \end{titlepage}
 }
