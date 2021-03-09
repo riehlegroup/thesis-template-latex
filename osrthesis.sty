@@ -16,6 +16,8 @@
 \usepackage{acronym}
 \usepackage{csquotes}
 
+\usepackage{graphicx} 
+
 
 %% Set up an English/German language toggle
 \newtoggle{thesis_in_german}
@@ -35,6 +37,9 @@
     \newcommand{\appendixnamesingular}{Anhang}
     \newcommand{\appendixnameplural}{Anhänge}
     \newcommand{\referencesname}{Literaturverzeichnis}
+
+    \newcommand{\submittedon}{Eingereicht am}
+    \newcommand{\supervisor}{Betreuer}
 }{
     \usepackage[ngerman,british]{babel}
     \usepackage[ngerman,british]{isodate}
@@ -44,6 +49,9 @@
     \newcommand{\appendixnamesingular}{Appendix}
     \newcommand{\appendixnameplural}{Appendices}
     \newcommand{\referencesname}{References}
+
+    \newcommand{\submittedon}{Submitted on}
+    \newcommand{\supervisor}{Supervisor}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,38 +126,44 @@
 \makeatletter
 \renewcommand\maketitle{%
     \begin{titlepage}
-    \thispagestyle{empty}
-    \Large Friedrich-Alexander-Universität Erlangen-Nürnberg
-    \vspace{0.03in} \\
-    \Large Technische Fakultät, Department Informatik \\
-    %
-    \vfill
-    \Large \MakeUppercase{\thesisauthorgivenname\ \thesisauthorsurname}
-    \vspace{0.1in} \\
-    \Large \MakeUppercase{\thesistype} \\
-    %
-    \\
-    \\
-    \LARGE\textbf{\MakeUppercase{\thesistitle}} \\
-    \\
-    \Large\textbf{\MakeUppercase{\thesissubtitle}} \\
-    %
-    \\
-    \\
-\iftoggle{thesis_in_german} {
-    \normalsize Eingereicht am \printdate{\thesissubmissiondate}  \\
-}{
-    \normalsize Submitted on \printdate{\thesissubmissiondate}  \\
-}
-    %
-    \vfill
-\iftoggle{thesis_in_german} {
-    Betreuer:
-}{
-    Supervisor:
-}
-    Prof. Dr. Dirk Riehle, M.B.A.\\Professur für Open-Source-Software\\Department Informatik, Technische Fakultät\\Friedrich-Alexander-Universität Erlangen-Nürnberg
-    %
+        \thispagestyle{empty}
+
+        \begin{center}
+            \huge{\textbf{{\thesistitle}}}
+            \par        % fixes line height
+            \vspace{0.2in}
+            \normalsize{\MakeUppercase{\thesistype}}
+            \\
+            \vspace{0.3in}
+            \textbf{\Large{\thesisauthorgivenname\ \thesisauthorsurname}}
+            
+            \vfill
+            
+            \submittedon\ \printdate{\thesissubmissiondate}
+
+            \vfill
+            
+            \begin{center}
+                \includegraphics[width=.3\textwidth]{./resources/Logo_FAU_Sigil.jpg}
+            \end{center}
+            \vspace{0.3in}
+            Friedrich-Alexander-Universität Erlangen-Nürnberg
+            \vspace{0.03in} \\
+            Technische Fakultät, Department Informatik
+            \vspace{0.03in} \\
+            Professur für Open-Source-Software
+            \vspace{0.3in}
+
+            \vfill
+
+            \underline{\supervisor :}
+            \\
+            \thesissupervisors
+            
+            \vfill
+
+            \includegraphics[width=.7\textwidth]{./resources/Logo_FAU_Techfak.jpg}
+        \end{center}
     \end{titlepage}
 }
 \makeatother
