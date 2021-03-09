@@ -76,10 +76,12 @@ International license (CC BY 4.0), see
 \chapter*{Abstract}\label{chapter:abstract}
 \input contents/abstract.tex
 
-\iftoggle{thesis_in_german} {
-  \chapter*{Zusammenfassung}\label{chapter:zusammenfassung}
-  \input contents/zusammenfassung.tex
-}
+\ifthenelse{\equal{\detokenize{\thesislanguage}}{\detokenize{German}}}
+  { % true
+    \chapter*{Zusammenfassung}\label{chapter:zusammenfassung}
+    \input contents/zusammenfassung.tex
+  } { %false
+  }
 
 \tableofcontents
 \input{contents/acronyms.tex}

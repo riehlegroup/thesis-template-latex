@@ -18,41 +18,34 @@
 
 \usepackage{graphicx} 
 
-
-%% Set up an English/German language toggle
-\newtoggle{thesis_in_german}
-\IfFileExists{contents/zusammenfassung.tex} {
-    \toggletrue{thesis_in_german}
-}{
-    \togglefalse{thesis_in_german}
-}
-
-
 %% Determine which date setting and language to use by default
-\iftoggle{thesis_in_german} {
-    \usepackage[british,ngerman]{babel}
-    \usepackage[british,ngerman]{isodate}
-    \selectlanguage{ngerman}
+\usepackage{ifthen} 
+\ifthenelse{\equal{\detokenize{\thesislanguage}}{\detokenize{German}}}
+    { % true
+        \usepackage[british,ngerman]{babel} % last entry as primary language
+        \usepackage[british,ngerman]{isodate}
+        \selectlanguage{ngerman}
 
-    \newcommand{\appendixnamesingular}{Anhang}
-    \newcommand{\appendixnameplural}{Anhänge}
-    \newcommand{\referencesname}{Literaturverzeichnis}
+        \newcommand{\appendixnamesingular}{Anhang}
+        \newcommand{\appendixnameplural}{Anhänge}
+        \newcommand{\referencesname}{Literaturverzeichnis}
 
-    \newcommand{\submittedon}{Eingereicht am}
-    \newcommand{\supervisor}{Betreuer}
-}{
-    \usepackage[ngerman,british]{babel}
-    \usepackage[ngerman,british]{isodate}
-    \selectlanguage{british}
-    \cleanlookdateon
+        \newcommand{\submittedon}{Eingereicht am}
+        \newcommand{\supervisor}{Betreuer}
+    }
+    { % false
+        \usepackage[ngerman,british]{babel} % last entry as primary language
+        \usepackage[ngerman,british]{isodate}
+        \selectlanguage{british}
+        \cleanlookdateon
 
-    \newcommand{\appendixnamesingular}{Appendix}
-    \newcommand{\appendixnameplural}{Appendices}
-    \newcommand{\referencesname}{References}
+        \newcommand{\appendixnamesingular}{Appendix}
+        \newcommand{\appendixnameplural}{Appendices}
+        \newcommand{\referencesname}{References}
 
-    \newcommand{\submittedon}{Submitted on}
-    \newcommand{\supervisor}{Supervisor}
-}
+        \newcommand{\submittedon}{Submitted on}
+        \newcommand{\supervisor}{Supervisor}
+    }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% GENERAL CONFIGURATION                                                  %%
