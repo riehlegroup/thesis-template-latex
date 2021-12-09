@@ -20,7 +20,7 @@
 
 %% Determine which date setting and language to use by default
 \usepackage{ifthen} 
-\ifthenelse{\equal{\detokenize{\thesislanguage}}{\detokenize{German}}}
+\ifthenelse{\equal{\thesislanguage}{German}}
     { % true
         \usepackage[british,ngerman]{babel} % last entry as primary language
         \usepackage[british,ngerman]{isodate}
