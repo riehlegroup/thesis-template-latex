@@ -11,6 +11,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{myconfiguration,osrthesis}
 \usepackage[backend=biber,style=apa]{biblatex}
+\setlength{\headheight}{15pt}
 
 \DeclareLanguageMapping{ngerman}{ngerman-apa}
 \DeclareLanguageMapping{british}{british-apa}
@@ -41,25 +42,39 @@
   \secdef\@chapter\@schapter}
 \makeatother
 
-\chapter*{Versicherung}\label{chapter:versicherung}
+\ifthenelse{\equal{\thesislanguage}{German}}
+{ %true
+\chapter*{Eidesstattliche Erklärung}
+\label{ch:eidesstattliche_erklaerung}
 
-Ich versichere, dass ich die Arbeit ohne fremde Hilfe und ohne 
-Benutzung anderer als der angegebenen Quellen angefertigt habe und 
-dass die Arbeit in gleicher oder ähnlicher Form noch keiner 
-anderen Prüfungsbehörde vorgelegen hat und von dieser als 
-Teil einer Prüfungsleistung angenommen wurde. Alle Ausführungen, 
-die wörtlich oder sinngemäß übernommen wurden, sind als 
-solche gekennzeichnet. 
+Ich versichere, dass ich die Arbeit ohne fremde Hilfe und ohne Benutzung anderer als der angegebenen Quellen angefertigt habe und dass die Arbeit in gleicher oder ähnlicher Form noch keiner anderen Prüfungsbehörde vorgelegen hat und von dieser als Teil einer Prüfungsleistung angenommen wurde. 
+Alle Ausführungen, die wörtlich oder sinngemäß übernommen wurden, sind als solche gekennzeichnet. 
+}
+{ %false
+\chapter*{Declaration of Originality}
+\label{ch:declaration_of_originality}
+I confirm that the submitted thesis is original work and was written by me without further assistance.
+Appropriate credit has been given where reference has been made to the work of others.
+The thesis was not examined before, nor has it been published. 
+The submitted electronic version ofthe thesis matches the printed version. 
+}
 
 \vspace{.5in}
 \makebox[3in]{\hrulefill} \\
 \thesissubmissioncity, \printdate{\thesissubmissiondate}
 
-\chapter*{License}\label{chapter:license}
+\ifthenelse{\equal{\thesislanguage}{German}}
+{ %true
+\chapter*{Lizenz}\label{ch:lizenz}
 
-This work is licensed under the Creative Commons Attribution 4.0 
-International license (CC BY 4.0), see 
-\url{https://creativecommons.org/licenses/by/4.0/}
+Diese Arbeit unterliegt der Creative Commons Attribution 4.0 International Lizenz (CC BY 4.0), \url{https://creativecommons.org/licenses/by/4.0/}
+}
+{ %false
+\chapter*{License}
+\label{ch:license}
+
+This work is licensed under the Creative Commons Attribution 4.0 International license (CC BY 4.0), see \url{https://creativecommons.org/licenses/by/4.0/}
+}
 
 \vspace{.5in}
 \makebox[3in]{\hrulefill} \\
