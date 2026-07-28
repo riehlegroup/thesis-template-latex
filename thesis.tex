@@ -89,12 +89,16 @@ This work is licensed under the Creative Commons Attribution 4.0 International l
 \makeatother
 
 \chapter*{Abstract}\label{chapter:abstract}
-\input contents/abstract.tex
+\input{contents/abstract.tex}
+
+\acresetall
 
 \ifthenelse{\equal{\thesislanguage}{German}}
   { % true
     \chapter*{Zusammenfassung}\label{chapter:zusammenfassung}
-    \input contents/zusammenfassung.tex
+    \input{contents/zusammenfassung.tex}
+
+    \acresetall
   } { %false
   }
 
@@ -111,7 +115,7 @@ This work is licensed under the Creative Commons Attribution 4.0 International l
 \pagenumbering{arabic}
 \headerstylemainsection
 
-\input contents/example.tex
+\input{contents/example.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -125,7 +129,7 @@ This work is licensed under the Creative Commons Attribution 4.0 International l
   \headerstyleclosingsection\
   \renewcommand\sectionmark[1]{\markright{\thesection : #1}} % Appendix A. => Appendix A:
 
-  \input contents/appendices.tex
+  \input{contents/appendices.tex}
 \end{appendices}
 
 \cleardoublepage
